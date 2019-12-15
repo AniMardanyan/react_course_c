@@ -1,4 +1,5 @@
 import React from "react";
+import './AddItem.css';
 
 const AddItem = () => {
     return (
@@ -10,3 +11,5 @@ const AddItem = () => {
     );
 };
  export default AddItem;
+
+

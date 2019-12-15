@@ -1,19 +1,22 @@
 import React from "react";
-import ListItem from "./../../components/ListItem/ListItem";
+import ListItem from  '../ListItem/ListItem';
+import './List.css';
 
-const List = () =>{
+const List = ({listData}) => {
+
+   const listItemData = listData.map((d) =>{
+       return <ListItem item={d} key={d.id}/>
+   })
     return (
-        <div>
-            <h3>Lists</h3>
-            <ul>
-                <ListItem />
-                <ListItem />
-                <ListItem />
-                <ListItem />
-
+    <div>
+        <h3>Lists</h3>
+        <ul>
+            {listItemData}
             </ul>
-        </div>
+            </div>
+    
     );
-};
+    
+    };
 
-export default List;
+    export default List;

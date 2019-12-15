@@ -1,23 +1,12 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import Filter from "./components/Filter/Filter";
-import List from "./components/List/List";
-import AddItem from "./components/AddItem/AddItem";
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-import "./index.css";
+import App from './components/App/App'
 
-const App = () => {
-    return (
-        <div>
-            <h1>ToDo List</h1>
-            <Filter/>
-            <List/>
-            <AddItem/>
-        </div>
-    );
-};
+import './index.css';
+
 
 ReactDOM.render(
-    <App />,
+    <App/>,
     document.getElementById('root')
 );
