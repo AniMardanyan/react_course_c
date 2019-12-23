@@ -1,17 +1,20 @@
-import React from "react";
-import "./Filter.css";
+import React from 'react';
 
-const Filter = () =>{
-    return (
-        <React.Fragment>
-            <h3>Search.</h3>
-            <input type = "text" className="mr-5"/>
-            <button className = "btn btn-info bg-light">Search</button>
-            <hr/>
-            <button className="btn btn-info bg-light mr-5">Important</button>
-            <button className="btn btn-primary bg-light">Active</button>
-        </React.Fragment>
-    );
+import './Filter.css';
+
+const Filter = () => {
+  return (
+    <div className="row filter-data">
+      <div className="form-group col-md-7">
+        <input type="text" className="form-control-plaintext" placeholder="Type to Search" />
+      </div>
+      <div className="form-group col-md-5">
+        <button className="btn btn-outline-primary mb-2 active">All</button>
+        <button className="btn btn-outline-primary mb-2">Active</button>
+        <button className="btn btn-outline-primary mb-2">Done</button>
+      </div>
+    </div>
+  );
 };
 
 export default Filter;

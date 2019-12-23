@@ -1,50 +1,64 @@
-import React from 'react';
+import React, { Component } from 'react';
+
 import './ListItem.css';
 
-const ListItem = ({item}) => {
+class ListItem extends Component {
 
-    const dataStyle = item.important ? 'red' : '#000' ;
-    const  textDec = item.isDone ? 'line-through':'none';
-    
+  state = {
+    isDone: false,
+    important: false
+  };
+
+  onlabelClick = () => {
+    this.setState(({ isDone }) => {
+      return {
+        isDone: !isDone
+      }
+    });
+  };
+
+  onImportant = () => {
+    this.setState(({ important }) => {
+      return {
+        important: !important
+      }
+    });
+  };
+
+  render() {
+    const { label,  onDeleteItem } = this.props;
+    const { isDone, important } = this.state;
+
+    let listClassName = 'pull-left todo-list-title';
+
+    listClassName += important ? ' important': '';
+    listClassName += isDone ? ' done': '';
+  
     return (
-    <li style={{color:dataStyle, textDecoration:textDec}}>
-        {item.title}
-            <button className="btn btn-danger ml-4 mb-1 mr-4 bg-light"> <i className="fa fa-remove"></i></button>
-            <button className="btn btn-info bg-light"><i className="fa fa-check"></i></button>
-            <textarea></textarea>
-        </li>
-    
+      <li className="list-group-item">
+        <span
+          className={ listClassName }
+          onClick={ this.onlabelClick }
+        >
+          { label.title }
+        </span>
+  
+        <span className="pull-right todo-list-buttons">
+          <button className="btn btn-danger" 
+          onClick={ () => onDeleteItem(label.id)}
+          >
+            <i className="fa fa-trash"></i>
+          </button>
+          <button
+            className="btn btn-success"
+            onClick={ this.onImportant }
+          >
+            <i className="fa fa-info"></i>
+          </button>
+        </span>
+      </li>
     );
-    
-    };
-    
-    
-    export default ListItem;
+  }
+};
 
-// import React, {Component} from 'react';
-
-// import './ListItem.css';
-
-// class ListItem extends Component {
-//     render(){
-//         const { item } = this.props;
-//         let liClasses ='';
-
-//     liClasses += item.important? 'important' : '';  //done-ic araj probel enq drel vor concat-ic heto important u done irar kpac chlinen
-//     liClasses += item.isDone? ' done' : '';
-    
-//     return (
-//     <li className = {liClasses}>
-//         {item.title}
-//         <button className='btn btn-danger'>
-//             <i className='fa fa-remove'></i></button>
-//         <button className='btn btn-info'>
-//             <i className='fa fa-check'></i></button>
-//             <textarea></textarea>
-//         </li>
-    
-//     );
-
-//     }
-// }
-// export default ListItem;
+export default ListItem;
